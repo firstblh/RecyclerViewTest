@@ -2,20 +2,17 @@ package com.firstblh.android_recyclerview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.firstblh.android_recyclerview.Decoration.SimpleDividerDecration;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.firstblh.android_recyclerview.adapter.CustomAdapter;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    ArrayList<String> mDatas = null;
     private CustomAdapter adapter;
 
     @Override
@@ -24,49 +21,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = (RecyclerView) this.findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        initData();
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        adapter = new CustomAdapter();
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        adapter = new CustomAdapter(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
-        recyclerView.addItemDecoration(new SimpleDividerDecration(this, SimpleDividerDecration.HORIZONTAL_LIST));
+//        recyclerView.addItemDecoration(new SimpleDividerDecration(this, SimpleDividerDecration.VERTICAL_LIST));
 
     }
 
-    protected void initData() {
-        mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++) {
-            mDatas.add("" + (char) i);
-        }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
-    class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.listview:
+                recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            ViewHolder holder = new ViewHolder(LayoutInflater.from(MainActivity.this).inflate(R.layout.item_view, parent, false));
-            return holder;
+                break;
+            case R.id.gridView:
+                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
+                break;
         }
 
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.textView.setText(mDatas.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return mDatas.size();
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder {
-            private TextView textView;
-
-            public ViewHolder(View view) {
-                super(view);
-                this.textView = (TextView) view.findViewById(R.id.tv);
-            }
-        }
+        return super.onOptionsItemSelected(item);
     }
 }
