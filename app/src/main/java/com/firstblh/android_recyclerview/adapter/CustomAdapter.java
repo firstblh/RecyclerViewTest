@@ -40,7 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "大哥,你点击Item的位置是"+position, Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "大哥,你点击Item的位置是"+position, Toast.LENGTH_SHORT).show();
             }
         });
     }

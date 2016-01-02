@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_margin="3dp"
-    android:background="@drawable/item_bg"
-    android:layout_height="match_parent">
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardElevation="2dp">
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/item_bg"
         android:gravity="center"
         android:paddingBottom="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_horizontal_margin"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/item_bg"
         android:textSize="16sp" />
-<!--
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tv"
-        android:background="@drawable/material_shadow_xhdpi" />-->
-</FrameLayout>
+    <!--
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tv"
+            android:background="@drawable/material_shadow_xhdpi" />-->
+</android.support.v7.widget.CardView>

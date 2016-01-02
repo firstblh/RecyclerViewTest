@@ -1,5 +1,6 @@
 package com.firstblh.android_recyclerview;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.gridView:
                 recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
+                break;
+            case R.id.goCardView:
+                Intent i = new Intent(this,CartViewActivity.class);
+                startActivity(i);
                 break;
         }
 

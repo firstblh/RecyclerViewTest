@@ -13,4 +13,9 @@
         android:orderInCategory="100"
         android:title="ListView"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/goCardView"
+        android:orderInCategory="100"
+        android:title="go CardView"
+        app:showAsAction="never" />
 </menu>
